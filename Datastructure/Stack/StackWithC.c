@@ -1,3 +1,5 @@
+#include <assert.h>
+
 enum { MAX_NUMS = 8 };
 
 int s_nums[MAX_NUMS];
@@ -24,7 +26,7 @@ int main(void)
 void push(int n)
 {
     assert(s_num_count < MAX_NUMS);
-    s_nums[s_nums_count++] = n;
+    s_nums[s_num_count++] = n;
 }
 
 int is_empty(void)

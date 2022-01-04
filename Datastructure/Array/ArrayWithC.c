@@ -1,3 +1,5 @@
+#include <assert.h>
+
 enum { MAX_NUMS = 8 };
 enum { INVALID_INDEX = -1 };
 
@@ -11,7 +13,7 @@ size_t find_index(int n);
 int main(void)
 {
     size_t index; 
-    
+
     insert_at(0, 1);
     insert_at(0, 2);
     insert_at(0, 3);

@@ -1,3 +1,5 @@
+#include <assert.h>
+
 enum { MAX_NUMS = 8 };
 
 int s_nums[MAX_NUMS];
@@ -12,7 +14,7 @@ int dequeue(void);
 int main(void)
 {
     int item;
-    
+
     enqueue(10);
     enqueue(20);
     enqueue(30);
@@ -48,7 +50,7 @@ int dequeue(void)
 {
     int ret;
 
-    assert(is_empty() == FALSE);
+    assert(is_empty() == 0);
 
     ret = s_nums[s_front];
 
