@@ -3,8 +3,8 @@
 enum { MAX_NUMS = 8 };
 
 int s_nums[MAX_NUMS];
-size_t s_front = 0;
-size_t s_back = 0;
+size_t s_front = 0; // 삭제 위치
+size_t s_back = 0; // 삽입 위치
 size_t s_num_count = 0;
 
 void enqueue(int n);
@@ -36,7 +36,7 @@ void enqueue(int n)
 
     s_nums[s_back] = n;
 
-    s_back = (s_back + 1) % MAX_NUMS;
+    s_back = (s_back + 1) % MAX_NUMS; // ring buiffer
 
     ++s_num_count;
 }
@@ -55,7 +55,7 @@ int dequeue(void)
     ret = s_nums[s_front];
 
     --s_num_count;
-    s_front = (s_front + 1) % MAX_NUMS;
+    s_front = (s_front + 1) % MAX_NUMS; // ring buffer
 
     return ret;
 }

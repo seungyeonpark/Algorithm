@@ -15,6 +15,7 @@ int main(void)
 {
     node_t* head = NULL;
 
+    // 함수 내에서 node_t*형의 값을 바꿔야 함으로 node_t*의 주소(이중 포인터) 전달해야 함
     insert_front(&head, 3);
     insert_front(&head, 5);
     insert_front(&head, 2);
@@ -27,6 +28,9 @@ int main(void)
 
     remove(&head, 2);
     remove(&head, 5);
+
+    // node_t의 참조만 필요하므로 node_t의 주소(단일 포인터) 전달하면 됨
+    print_node(head);
 
     destroy(head);
     head = NULL;
@@ -97,8 +101,11 @@ void destroy(node_t* head)
     node_t* p = head;
 
     while (p != NULL) {
+        // 해제할 노드에 있는 다음 노드 주소 저장
         node_t* next = p->next;
+        // 노드 해제
         free(p);
+        // 다음 노드를 가리킴
         p = next;
     }
 }

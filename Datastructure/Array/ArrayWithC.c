@@ -37,7 +37,7 @@ void insert_at(size_t index, int n)
 {
     size_t i;
 
-    assert(index <= s_num_count);
+    assert(index <= s_num_count); // caution!
     assert(s_num_count < MAX_NUMS);
 
     for (i = s_num_count; i > index; i--) {
@@ -54,7 +54,7 @@ void remove_at(size_t index)
 
     assert(index < s_num_count);
 
-    --s_num_count;
+    --s_num_count; // caution! s_num_count를 빼고 배열의 요소를 옮겨야 함. 안그러면 범위 초과
     for (i = index; i < s_num_count; i++) {
         s_nums[i] = s_nums[i + 1];
     }
