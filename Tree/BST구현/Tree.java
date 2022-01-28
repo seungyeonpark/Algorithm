@@ -52,17 +52,21 @@ public class Tree {
 		} else if (node.getData() < data) {
 			node.setRightNode(deleteNode(node.getRightNodeOrNull(), data));
 		} else {
-			if (node.getLeftNodeOrNull() == null && node.getRightNodeOrNull() == null) {
-				return null;
-			} else if (node.getLeftNodeOrNull() == null) {
-				return node.getRightNodeOrNull();
+			if (node.getLeftNodeOrNull() == null) {
+				if (node == root) {
+					root = root.getRightNodeOrNull();
+				}
+				node = node.getRightNodeOrNull();
 			} else if (node.getRightNodeOrNull() == null) {
-				return node.getLeftNodeOrNull();
+				if (node == root) {
+					root = root.getLeftNodeOrNull();
+				}
+				node = node.getLeftNodeOrNull();
+			} else {
+				Node temp = getBeforeNode(node.getLeftNodeOrNull());
+				node.setData(temp.getData());
+				node.setLeftNode(deleteNode(node.getLeftNodeOrNull(), temp.getData()));
 			}
-			
-			Node temp = getBeforeNode(node.getLeftNodeOrNull());
-			node.setData(temp.getData());
-			node.setLeftNode(deleteNode(node.getLeftNodeOrNull(), temp.getData()));
 		}
 		
 		return node;
